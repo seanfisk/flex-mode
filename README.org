@@ -1,7 +1,7 @@
 * flex-mode
 
-This represents an attempt to write a major mode for [[http://flex.sourceforge.net/][Flex]], the fast
-lexical analyzer.
+This represents an attempt to write an Emacs major mode for [[http://flex.sourceforge.net/][Flex]], the
+fast lexical analyzer.
 
 Writing Emacs modes is a new experience for its authors. This mode is
 not currently ready for use.

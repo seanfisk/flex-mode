@@ -1,6 +1,7 @@
 * Flex Keyword Extraction
 
-The files in this directory are used to extract keywords out of the Flex source code. Current only options are extracted.
+The files in this directory are used to extract keywords out of the
+Flex source code. Currently only options are extracted.
 
 ** Option Extraction
 

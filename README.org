@@ -8,5 +8,5 @@ not currently ready for use.
 
 ** Authors
 
-- Jordan Biondo
+- Jordon Biondo
 - Sean Fisk

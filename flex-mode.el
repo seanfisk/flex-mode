@@ -46,7 +46,7 @@ STRINGS should have one string per line."
     (,(flex-make-regexp-opt "")))
   "A list of Flex keywords.")
 
-(define-derived-mode flex-mode fundamental-mode "Flex"
+(define-derived-mode flex-mode c-mode "Flex"
   (set (make-local-variable 'font-lock-defaults)
        '(flex-font-lock-keywords)))
 

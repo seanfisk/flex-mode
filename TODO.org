@@ -4,5 +4,7 @@ TODO list
 * TODO Option highlighting.
 * TODO Don't override =c-mode= keywords.
 * TODO Or expression alignment (possibly with =table.el=).
+* TODO Flex mode menu
+  Check out easy-menu.
 * DONE Write an or expression (=|=) insertion bound to =M-RET=.
   CLOSED: [2013-03-21 Thu 18:31]

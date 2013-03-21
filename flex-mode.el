@@ -41,6 +41,7 @@ STRINGS should have one string per line."
 (defun flex-insert-or-expression ()
   "Insert another expression separated by the or symbol (`|')."
   (interactive)
+  (delete-horizontal-space)
   (insert " |\n"))
 
 (defconst flex-font-lock-keywords

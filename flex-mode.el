@@ -38,6 +38,11 @@ STRINGS should have one string per line."
   ;; consider adding 'words to this call
   (regexp-opt (split-string strings "\n" t)))
 
+(defun flex-insert-or-expression ()
+  "Insert another expression separated by the or symbol (`|')."
+  (interactive)
+  (insert " |\n"))
+
 (defconst flex-font-lock-keywords
   `((,(flex-make-regexp-opt "%%
 %option
@@ -48,7 +53,10 @@ STRINGS should have one string per line."
 
 (define-derived-mode flex-mode fundamental-mode "Flex"
   (set (make-local-variable 'font-lock-defaults)
-       '(flex-font-lock-keywords)))
+       '(flex-font-lock-keywords))
+  ;; The variable `flex-mode-map' is automatically created by
+  ;; `define-derived-mode'.
+  (define-key flex-mode-map (kbd "M-RET") 'flex-insert-or-expression))
 
 (provide 'flex-mode)
 

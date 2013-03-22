@@ -62,7 +62,12 @@ STRINGS should have one string per line."
   (setcar font-lock-defaults (append flex-font-lock-keywords c-font-lock-keywords-3))
   ;; The variable `flex-mode-map' is automatically created by
   ;; `define-derived-mode'.
-  (define-key flex-mode-map (kbd "M-RET") 'flex-insert-or-expression))
+  (define-key flex-mode-map (kbd "M-RET") 'flex-insert-or-expression)
+  (easy-menu-define flex-menu flex-mode-map "Flex Mode menu"
+    '("Flex"
+      :help "Flex-specific features"
+      ["Insert Alternative" flex-insert-or-expression
+       :help "Insert a | and move to the next line."])))
 
 (provide 'flex-mode)
 

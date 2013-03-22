@@ -35,7 +35,7 @@
 (defun flex-make-regexp-opt (strings)
   "Make a regexp to match a string in STRINGS.
 STRINGS should have one string per line."
-  ;; consider adding 'words to this call
+  ;; consider adding 'words or 'symbols to this call
   (regexp-opt (split-string strings "\n" t)))
 
 (defun flex-insert-or-expression ()
@@ -48,13 +48,18 @@ STRINGS should have one string per line."
   `((,(flex-make-regexp-opt "%%
 %option
 %{
-%}") . font-lock-keyword-face)
-    (,(flex-make-regexp-opt "")))
+%}") . font-lock-keyword-face))
   "A list of Flex keywords.")
 
 (define-derived-mode flex-mode c-mode "Flex"
-  (set (make-local-variable 'font-lock-defaults)
-       '(flex-font-lock-keywords))
+  ;; CC Mode has three levels of fontification. Level 3 is the most
+  ;; accurate, so that's the one we'd like to use. CC Mode also does
+  ;; some other stuff with `font-lock-defaults' that we want to keep,
+  ;; so we just set the car of it to be our keywords plus the CC Mode
+  ;; level 3 keywords. This somewhat likely to change later because
+  ;; the other elements of `font-lock-defaults' will also be important
+  ;; to customize.
+  (setcar font-lock-defaults (append flex-font-lock-keywords c-font-lock-keywords-3))
   ;; The variable `flex-mode-map' is automatically created by
   ;; `define-derived-mode'.
   (define-key flex-mode-map (kbd "M-RET") 'flex-insert-or-expression))

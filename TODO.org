@@ -2,9 +2,10 @@ TODO list
 
 * TODO Travis-CI that runs =checkdoc=.
 * TODO Option highlighting.
-* TODO Don't override =c-mode= keywords.
 * TODO Or expression alignment (possibly with =table.el=).
 * TODO Flex mode menu
   Check out easy-menu.
+* DONE Don't override =c-mode= keywords.
+  CLOSED: [2013-03-21 Thu 21:48]
 * DONE Write an or expression (=|=) insertion bound to =M-RET=.
   CLOSED: [2013-03-21 Thu 18:31]

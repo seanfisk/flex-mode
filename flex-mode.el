@@ -44,11 +44,26 @@ STRINGS should have one string per line."
   (delete-horizontal-space)
   (insert " |\n"))
 
+
+(defun flex-jump-block()
+  "Jump forward to the next flex section delimiter, wrap to the top of the buffer if needed"
+  (interactive)
+  (let ((new-pos nil))
+    (save-excursion
+      (setq new-pos (search-forward-regexp flex-section-delimiters nil t))
+      (if (not new-pos)
+	  (progn (beginning-of-buffer)
+		 (setq new-pos (search-forward-regexp flex-section-delimiters nil t)))))
+    (if new-pos (goto-char new-pos))))
+
+
+(defconst flex-section-delimiters "\\(\\%%\\|%}\\|%{\\)"
+  "Regexp matching flex section delimiters %{ %} and %%")
+
+
 (defconst flex-font-lock-keywords
-  `((,(flex-make-regexp-opt "%%
-%option
-%{
-%}") . font-lock-keyword-face))
+  `((,(flex-make-regexp-opt "%option") . font-lock-keyword-face)
+    (,flex-section-delimiters . font-lock-constant-face))
   "A list of Flex keywords.")
 
 (define-derived-mode flex-mode c-mode "Flex"
